@@ -1,0 +1,321 @@
+$checkBoxStartGradient:#55DDFF;
+$checkBoxEndGradient:#C058F3;
+$btnSelected:#3A7CFD;
+$gap:16;
+// media
+$mobile:320px;
+$tablet:768px;
+$desktop:1024px;
+@mixin adjustMaxWidth($gap) {
+    max-width: calc(100% - (2*$gap + 24px + 44.25px));
+}
+@mixin mainStyles (
+$fontColor,$bodyBg,$btnColor,$btnActive,$listBg,
+$bgSrcDesktop,$bgSrcMobile,$iconUnicode,$btnHover,
+$deletedTask
+)
+{
+
+    body{
+        font-family: 'JosefinSans-Regular', sans-serif;
+        font-size: 18px;
+        color:$fontColor;
+        height: calc(100vh - 16px);
+        margin:0;
+        background-color:$bodyBg;
+        user-select: none;
+        & .stopPointer{
+            pointer-events: none !important;
+        }
+        .d-none{
+            display: none !important;
+        }
+        i{
+            cursor: pointer;
+
+        }
+        h1{
+            margin: 0;
+            color: white;   
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            span{
+                letter-spacing: 15px;
+            }
+            i{
+                &::before{
+                    content:$iconUnicode;
+                }
+                &.sun:hover{
+                    @media(min-width:$desktop){
+                        color:yellow;
+                    }
+                }
+                &.moon:hover{
+                    @media(min-width:$desktop){
+                        color:$fontColor;
+                    }
+                }
+            }
+
+        }
+        header {
+            height: 30vh;
+            background-image: url('../assets/images/#{$bgSrcMobile}');
+            @media (min-width:$tablet){
+                background-image: url('../assets/images/#{$bgSrcDesktop}');
+            }
+            background-repeat: no-repeat;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            .to-do-container{
+                position: relative;
+                top: 70px;
+                z-index: 2;
+                width: 100%;
+                max-width: 540px;
+                margin-left: 20px;
+                margin-right: 20px;
+
+                ul{
+                    list-style: none;
+                    padding: 0px;
+                    input[type='text']{
+                        all:unset;
+                        flex-grow: 1;
+                        font-size:1em;
+                        color: inherit;
+                        line-height: 1.8;
+                        caret-color: $checkBoxEndGradient;
+                 
+                        &::placeholder{
+                            color:$btnColor;  
+                            font-size: inherit;
+                        }
+                    }
+                    li{
+               
+                        background-color: $listBg;
+                        padding: 14px 20px;
+                        display: flex;
+                        align-items: center;
+                   
+                        del{
+                            color:$deletedTask;
+                        }
+                        i{
+                            &:hover{
+                                @media(min-width:$desktop){
+                                    color:$btnSelected;
+
+                                }
+                            }
+                        }
+                        input[type='checkbox']{
+    
+                            all:unset;
+                            appearance: unset;
+                            margin: unset;
+                            padding: unset;
+                           
+                            width: 24px;
+                            height: 24px;
+                            border-radius: 50%;
+                            position: relative;
+                            cursor: pointer;
+                            &:before{
+                                content: "";
+                                position: absolute;
+                                top: 0px;
+                                left: 0px;
+                                z-index:3;
+                                width: 100%;
+                                height: 100%;
+                                background-color: $listBg;
+                                border-radius: 50%;
+                                border:1px solid $btnColor;
+                                font-family: "Font Awesome 6 Free";
+                                font-weight: 900;
+                                
+                            }
+                            &:hover{
+                                &::before{
+                                    @media(min-width:$desktop){
+                                        border-color: $checkBoxEndGradient;
+
+                                    }
+                                }
+                            }
+                            &.selected{
+                                border: unset;
+                                text-align: center;
+                                line-height: 24px;
+                                color:white;
+                              
+                                &:before{
+                                    border:unset;
+                                    padding: 1px;
+                                    background-image: linear-gradient($checkBoxStartGradient,$checkBoxEndGradient);
+                                    content:"\f00c";
+                                }
+                  
+                            }
+        
+                        }
+                        &.add-task{
+                            gap: 16px;
+                            margin-bottom: 23px;
+                            border:1px solid $btnColor;
+                            border-radius: 5px;
+                            & input[type="checkbox"]{
+                                &.selected{
+                                    cursor: pointer;
+                                }
+                                cursor: default;
+                            }
+                            &+.taskContainer{
+                                border:1px solid $btnColor;
+                                border-radius: 5px;
+                                ul{
+                                    border-radius: 5px 5px 0px 0px;
+                                        overflow: auto;
+                                        -ms-overflow-style: none;  /* IE and Edge */
+                                        scrollbar-width: none;  /* Firefox */
+                                        &::-webkit-scrollbar{
+                                            display: none;
+                                        }
+                                        max-height:65vh;
+                                        @media(max-width:$tablet){
+                                            max-height:53vh;
+                                        }
+        
+                                   
+                                }
+                            }
+                
+                        }
+                        &.addedTasks{
+                            cursor: pointer ;
+                            $gap: 16px;
+                            justify-content: space-between;
+                            line-height: 1.8;
+                            gap: $gap;
+                            .taskValue,.completed,.edit{
+                                flex-grow: 1;
+                                display: inline-block;
+                                word-break: break-word;
+
+                                @include adjustMaxWidth($gap);
+                            }
+                            div{
+                                display: flex;
+                                align-items: center;
+                                gap: 15px;
+                            }
+                        }
+
+                        &.formDetails{
+                            &.changeBorderRaduis{
+                                border-radius: 5px ;
+                            }
+                            border-radius: 0px 0px 5px 5px;
+                            display: flex;
+                            justify-content: space-between;
+                            color: $btnColor;
+                            & .task-status{
+                                display: none;
+                                @media(min-width:$tablet){
+                                    display: flex;
+                                    gap:10px;
+                                }
+                            }
+                        }
+                    }
+                    &+.task-status{
+                        padding: 14px 20px;
+                        background-color: $listBg;
+                        display: flex;
+                        justify-content: center;
+                        gap: 20px;
+                        align-items: center;
+                        border:1px solid $btnColor;
+                        border-radius: 5px;
+                    
+                        @media(min-width:$tablet){
+                            display: none;
+                        }
+                    }
+       
+                }
+     
+            }
+        }
+        
+    }
+
+    button{
+        outline: none ;
+        border: none;
+        background-color: transparent;
+        font-weight: bold;
+        // border-radius: 26.5px;
+        &.stopPointer{
+            pointer-events: none;
+        }
+        font-family: inherit;
+        font-size: inherit;
+        cursor: pointer;
+        padding:0px;
+        color: $btnColor;
+        // user-select: none;
+        box-shadow: unset !important;
+        &:hover{
+            @media(min-width:$desktop){
+                color:$btnHover;
+
+            }
+        }
+        &.selected{
+            color:$btnSelected;
+            pointer-events: none;
+        }
+
+    }
+    .no-highlights{
+        -webkit-tap-highlight-color: transparent ;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none ;
+        -khtml-user-select: none ;
+        -moz-user-select: none ;
+        -ms-user-select: none ;
+        user-select: none ;
+    }
+    .no-highlights:focus{
+        outline: none !important;
+    }
+    input[type="checkbox"]::before{
+            -webkit-tap-highlight-color: transparent;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+
+        &:focus{
+
+            outline: none !important;
+        }
+    }
+    .sortable-drag,.sortable-ghost,.sortable-fallback,.sortable-chosen{
+        background-color: $listBg !important;
+        cursor: pointer !important;
+        opacity: 1 !important;
+    }
+    .edit{
+        cursor: unset !important;
+    }
+
+}

@@ -1,0 +1,15 @@
+@font-face {
+    font-family:"JosefinSans-Bold";
+    src: url(../assets/font/JosefinSans-Bold.ttf);
+    font-display: swap;
+}
+@font-face {
+    font-family:"JosefinSans-Regular";
+    src: url(../assets/font/JosefinSans-Regular.ttf);
+    font-display: swap;
+}
+@font-face {
+    font-family:"JosefinSans-Light";
+    src: url(../assets/font/JosefinSans-Light.ttf);
+    font-display: swap;
+}

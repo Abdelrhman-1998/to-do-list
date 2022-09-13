@@ -1,0 +1,6 @@
+@use './darkModeVariables' as *;
+@use  './main' as *;
+@include mainStyles(
+    $fontColor,$bodyBg,$btnColor,$btnActive,$listBg,$bgSrcDesktop,$bgSrcMobile,$iconUnicode,$btnHover,
+    $deletedTask
+    );
