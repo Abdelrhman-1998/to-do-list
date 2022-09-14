@@ -1,4 +1,4 @@
-import Sortable from "./Sortable.js";
+import Sortable from "./Sortable.min.js";
 var taskStatus;
 (function (taskStatus) {
     taskStatus[taskStatus["Active"] = 0] = "Active";

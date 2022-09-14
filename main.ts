@@ -1,4 +1,4 @@
-import Sortable from "./Sortable.js";
+import Sortable from "./Sortable.min.js";
 enum taskStatus {Active,completed};
 interface _Task{
     index:number,

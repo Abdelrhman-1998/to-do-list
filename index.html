@@ -14,82 +14,85 @@
 
 </head>
 <body>
-  <header>
-    <div class="to-do-container">
-        <h1>
-          <span>TODO</span>
-          <i class="fa-solid moon no-highlights"></i>
-        </h1>
-        <form action="">
-          <ul>
-            <li class="add-task">
-              <input type="checkbox" name="entryCheckbox" id="entry" aria-label="entryCheckbox" class="no-highlights">
-              <input type="text"  autocomplete="off" id="entryTask" name="entryTask"  placeholder="Create a new todo...">
-              <label for="entryTask" class="d-none"></label>
-            </li>
-            <div class="taskContainer">
-              <ul class="tasks">
-                  
-              </ul>
-              <li class="formDetails">
-                <div>
-                  <span class="items">
-                    0
-                  </span>
-                  <span>
-                    items 
-                  </span>
-                  <span class="d-none">left</span>
-                </div>
-                <div class="task-status">
-                  <button type="button" class="selected no-highlights">
-                    All
-                  </button >
-                  <button type="button" class="no-highlights">
-                    Active
-                  </button>
-                  <button type="button " class="no-highlights">
-                    Completed
-                  </button>
-                </div>
-                <button type="button " class="no-highlights">
-                  Clear Completed
-                </button>
+  <main>
+    <header>
+      <div class="to-do-container">
+          <h1>
+            <span>TODO</span>
+            <i class="fa-solid moon no-highlights"></i>
+          </h1>
+          <form >
+            <ul>
+              <li class="add-task">
+                <input type="checkbox" name="entryCheckbox" id="entry" aria-label="entryCheckbox" class="no-highlights">
+                <input type="text"  autocomplete="off" id="entryTask" name="entryTask"  placeholder="Create a new todo...">
+                <label for="entryTask" class="d-none"></label>
               </li>
-
+              <ul class="taskContainer">
+                <ul class="tasks">
+                    
+                </ul>
+                <li class="formDetails">
+                  <div>
+                    <span class="items">
+                      0
+                    </span>
+                    <span>
+                      items 
+                    </span>
+                    <span class="d-none">left</span>
+                  </div>
+                  <div class="task-status">
+                    <button type="button" class="selected no-highlights">
+                      All
+                    </button >
+                    <button type="button" class="no-highlights">
+                      Active
+                    </button>
+                    <button type="button " class="no-highlights">
+                      Completed
+                    </button>
+                  </div>
+                  <button type="button " class="no-highlights">
+                    Clear Completed
+                  </button>
+                </li>
+  
+              </ul>
+            </ul>
+            <div class="task-status">
+                <button type="button" class="selected no-highlights">
+                  All
+                </button >
+                <button type="button" class="no-highlights">
+                  Active
+                </button>
+                <button type="button" class="no-highlights">
+                  Completed
+                </button>
             </div>
-          </ul>
-          <div class="task-status">
-              <button type="button" class="selected no-highlights">
-                All
-              </button >
-              <button type="button" class="no-highlights">
-                Active
-              </button>
-              <button type="button" class="no-highlights">
-                Completed
-              </button>
-          </div>
-        </form>
-    </div>
+          </form>
+      </div>
+  
+    </header>
 
-  </header>
+  </main>
 
   <template class="read" >
     <li class="addedTasks active">
      
-        <input type="checkbox" name="taskCheckbox" id="taskCheckbox" class="no-highlights">
-        <label for="taskCheckbox" class="d-none"></label>
+        <input aria-label="checkbox" type="checkbox" name="taskCheckbox"  class="no-highlights">
+     
         <span class="taskValue"></span>
         <del class="completed d-none"></del>
-        <input class="edit d-none" type="text"  name="edit" id="edit"  autocomplete="off">
-        <label for="edit" class="d-none"></label>
+        <input aria-label="edit input" class="edit d-none" type="text"  name="edit"   autocomplete="off">
+       
       <div>
         <i class="fa-solid no-highlights fa-pencil"></i>
         <i class="fa-solid no-highlights fa-xmark"></i>
       </div>
-      <input type="hidden" name="taskID" id="taskID">
-      <label for="taskID" class="d-none"></label>
+      <input aria-label="id" type="hidden" name="taskID" >
+      
     </li>
   </template>
   <script src="./dist/main.js" type="module"></script>
